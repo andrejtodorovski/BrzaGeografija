@@ -1,31 +1,19 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Answer } from './Answer';
-import { BgService } from './bg.service';
-import { Country } from './Country';
+import { Answer } from '../Answer/Answer';
+import { BgService } from '../../bg.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  templateUrl: '../app-component/app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
   title = 'brzageografija';
-  public countries: Country[] = [];
+  letter: String =''
   constructor(private bgService: BgService){}
   ngOnInit(): void {
-    this.getCountries();
-  }
-  public getCountries():void{
-    this.bgService.getAllCountries().subscribe(
-      (response: Country[]) => {
-        this.countries = response;
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message)
-      }
-      );
   }
   public submitResults(result: NgForm):void{
     document.getElementById('submit')?.click();
@@ -38,6 +26,21 @@ export class AppComponent implements OnInit{
           alert(error.message);
         }
       );
+  }
+  public generateLetter():String{
+  this.bgService.getLetter().subscribe(
+    (response:String)=>
+  {
+    console.log(response);
+    this.letter=response.toUpperCase();
+  }
+  ,
+  (error : HttpErrorResponse) => {
+    alert(error.message);
+  }
+  );
+  return this.letter;  
+
   }
 }
 

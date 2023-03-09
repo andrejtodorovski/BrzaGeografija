@@ -4,12 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent } from './components/app-component/app.component';
 import { BgService } from './bg.service';
+import { AnswerComponent } from './components/Answer/answer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AnswerComponent
   ],
   imports: [
     BrowserModule,
