@@ -6,4 +6,5 @@ export interface Result {
     animal: number;
     plant: number;
     thing: number;
+    totalPoints:number;
 }
