@@ -63,6 +63,11 @@ public class HomeController {
         resultPointsDTO.setPlant(
                 plantService.isValidAnswer(resultDTO.getPlant(), randomLetter) ? defPoints : 0
         );
+        resultPointsDTO.setTotalPoints(
+                resultPointsDTO.getCity()+ resultPointsDTO.getAnimal()+ resultPointsDTO.getCountry()+
+                        resultPointsDTO.getMountain()+ resultPointsDTO.getPlant()+ resultPointsDTO.getThing()+
+                        resultPointsDTO.getRiver()
+        );
         return resultPointsDTO;
     }
 }

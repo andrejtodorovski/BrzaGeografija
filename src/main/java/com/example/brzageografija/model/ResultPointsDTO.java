@@ -15,4 +15,5 @@ public class ResultPointsDTO {
     Integer plant;
     Integer animal;
     Integer thing;
+    Integer totalPoints;
 }
