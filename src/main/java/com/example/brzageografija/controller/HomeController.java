@@ -34,12 +34,12 @@ public class HomeController {
         String abc = "abcdefghijklmnopqrstuvwxyz";
         Random rd = new Random();
         String letter = String.valueOf(abc.charAt(rd.nextInt(abc.length())));
-        request.getSession().setAttribute("randomLetter", letter);
+        request.getServletContext().setAttribute("randomLetter", letter.toUpperCase());
         return letter;
     }
     @PostMapping("/submitAnswer")
     public ResultPointsDTO isValidEntry(@RequestBody ResultDTO resultDTO, HttpServletRequest request){
-        String randomLetter = (String) request.getSession().getAttribute("randomLetter");
+        String randomLetter = (String) request.getServletContext().getAttribute("randomLetter");
         ResultPointsDTO resultPointsDTO = new ResultPointsDTO();
         int defPoints = 5;
         resultPointsDTO.setCountry(

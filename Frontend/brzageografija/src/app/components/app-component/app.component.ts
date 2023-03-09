@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Answer } from '../Answer/Answer';
 import { BgService } from '../../bg.service';
+import { Result } from './result.model';
 
 @Component({
   selector: 'app-root',
@@ -12,20 +13,28 @@ import { BgService } from '../../bg.service';
 export class AppComponent implements OnInit{
   title = 'brzageografija';
   letter: String =''
+  rezultat:Result | any=null;
   constructor(private bgService: BgService){}
   ngOnInit(): void {
+    const button=document.getElementById("submit") as HTMLButtonElement;
+button.disabled=true;
   }
-  public submitResults(result: NgForm):void{
+  public submitResults(result: NgForm):Result{
     document.getElementById('submit')?.click();
       this.bgService.addResult(result.value).subscribe(
-        (response: Answer) => {
+        (response: Result) => {
           console.log(response);
-          console.log(result.value);
+          this.rezultat=response;
+          const button2=document.getElementById("letter") as HTMLButtonElement;
+          button2.disabled=false;
+          const button=document.getElementById("submit") as HTMLButtonElement;
+          button.disabled=true;
         },
         (error : HttpErrorResponse) => {
           alert(error.message);
         }
       );
+      return this.rezultat;
   }
   public generateLetter():String{
   this.bgService.getLetter().subscribe(
@@ -33,6 +42,12 @@ export class AppComponent implements OnInit{
   {
     console.log(response);
     this.letter=response.toUpperCase();
+    const button=document.getElementById("submit") as HTMLButtonElement;
+    const button2=document.getElementById("letter") as HTMLButtonElement;
+    button2.disabled=true;
+
+
+    button.disabled=false;
   }
   ,
   (error : HttpErrorResponse) => {

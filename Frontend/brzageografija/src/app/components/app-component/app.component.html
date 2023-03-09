@@ -1,5 +1,5 @@
 <div class="container">
-    <input type="button" class="btn btn-success p-2 m-3" value="generateLetter" (click)="generateLetter()">
+    <input id="letter" type="button" class="btn btn-success p-2 m-3" value="generateLetter" (click)="generateLetter()">
     <div class="md-3 m-3">Current letter: {{this.letter}}</div>
 </div>
 
@@ -8,30 +8,37 @@
   <div class="d-flex flex-column justify-content-center align-items-center m-3 child">
     <label for="country">Country</label>
     <input id="country" ngModel type="text" name="country"/>
+    <div>{{this.rezultat.country}}</div>
   </div>
   <div class="d-flex flex-column justify-content-center align-items-center m-3 child">
     <label for="city">City</label>
     <input id="city" ngModel type="text" name="city"/>
+    <div>{{this.rezultat.city}}</div>
   </div>
   <div class="d-flex flex-column justify-content-center align-items-center m-3 child">
     <label for="river">River</label>
     <input id="river" ngModel type="text" name="river"/>
+    <div>{{this.rezultat.river}}</div>
   </div>
   <div class="d-flex flex-column justify-content-center align-items-center m-3 child">
     <label for="mountain">Mountain</label>
     <input id="mountain" ngModel type="text" name="mountain"/>
+    <div>{{this.rezultat.mountain}}</div>
   </div>
   <div class="d-flex flex-column justify-content-center align-items-center m-3 child">
     <label for="animal">Animal</label>
     <input id="animal" ngModel type="text" name="animal"/>
+    <div>{{this.rezultat.animal}}</div>
   </div>
   <div class="d-flex flex-column justify-content-center align-items-center m-3 child">
     <label for="plant">Plant</label>
     <input id="plant" ngModel type="text" name="plant"/>
+    <div>{{this.rezultat.plant}}</div>
   </div>
   <div class="d-flex flex-column justify-content-center align-items-center m-3 child">
     <label for="thing">Thing</label>
     <input id="thing" ngModel type="text" name="thing"/>
+    <div>{{this.rezultat.thing}}</div>
   </div>
   <div class="d-flex flex-column justify-content-center align-items-center m-3 child">
     <button id="submit" type="submit" class="btn btn-primary">Submit</button>
