@@ -13,7 +13,7 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public boolean isValidAnswer(String input) {
-        return cityRepository.findAllByCityNameEqualsIgnoreCase(input).size()>0;
+    public boolean isValidAnswer(String input, String s) {
+        return cityRepository.findAllByCityNameEqualsIgnoreCaseAndCityNameStartsWith(input, s).size()>0;
     }
 }

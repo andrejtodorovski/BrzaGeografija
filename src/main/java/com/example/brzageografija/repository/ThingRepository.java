@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ThingRepository extends JpaRepository<Thing,Long> {
-    List<Thing> findAllByThingNameEqualsIgnoreCase(String thingName);
+    List<Thing> findAllByThingNameEqualsIgnoreCaseAndThingNameStartsWith(String thingName, String s);
 }

@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface MountainRepository extends JpaRepository<Mountain,Long> {
-    List<Mountain> findAllByMountainNameEqualsIgnoreCase(String mountainName);
+    List<Mountain> findAllByMountainNameEqualsIgnoreCaseAndMountainNameStartsWith(String mountainName, String s);
 }

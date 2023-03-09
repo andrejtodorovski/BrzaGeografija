@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface RiverRepository extends JpaRepository<River,Long> {
-    List<River> findAllByRiverNameEqualsIgnoreCase(String riverName);
+    List<River> findAllByRiverNameEqualsIgnoreCaseAndRiverNameStartsWith(String riverName, String s);
 }

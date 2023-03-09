@@ -13,7 +13,7 @@ public class MountainServiceImpl implements MountainService {
     }
 
     @Override
-    public boolean isValidAnswer(String input) {
-        return mountainRepository.findAllByMountainNameEqualsIgnoreCase(input).size()>0;
+    public boolean isValidAnswer(String input, String s) {
+        return mountainRepository.findAllByMountainNameEqualsIgnoreCaseAndMountainNameStartsWith(input, s).size()>0;
     }
 }

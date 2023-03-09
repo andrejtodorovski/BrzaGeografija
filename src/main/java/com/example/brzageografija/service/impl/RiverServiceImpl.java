@@ -13,7 +13,7 @@ public class RiverServiceImpl implements RiverService {
     }
 
     @Override
-    public boolean isValidAnswer(String input) {
-        return riverRepository.findAllByRiverNameEqualsIgnoreCase(input).size()>0;
+    public boolean isValidAnswer(String input, String s) {
+        return riverRepository.findAllByRiverNameEqualsIgnoreCaseAndRiverNameStartsWith(input, s).size()>0;
     }
 }

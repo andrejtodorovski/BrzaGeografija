@@ -13,7 +13,7 @@ public class PlantServiceImpl implements PlantService {
     }
 
     @Override
-    public boolean isValidAnswer(String input) {
-        return plantRepository.findAllByPlantNameEqualsIgnoreCase(input).size()>0;
+    public boolean isValidAnswer(String input, String s) {
+        return plantRepository.findAllByPlantNameEqualsIgnoreCaseAndPlantNameStartsWith(input, s).size()>0;
     }
 }

@@ -13,7 +13,7 @@ public class AnimalServiceImpl implements AnimalService {
     }
 
     @Override
-    public boolean isValidAnswer(String input) {
-        return animalRepository.findAllByAnimalNameEqualsIgnoreCase(input).size()>0;
+    public boolean isValidAnswer(String input, String s) {
+        return animalRepository.findAllByAnimalNameEqualsIgnoreCaseAndAnimalNameStartsWith(input,s).size()>0;
     }
 }

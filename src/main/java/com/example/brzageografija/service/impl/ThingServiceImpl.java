@@ -13,7 +13,7 @@ public class ThingServiceImpl implements ThingService {
     }
 
     @Override
-    public boolean isValidAnswer(String input) {
-        return thingRepository.findAllByThingNameEqualsIgnoreCase(input).size()>0;
+    public boolean isValidAnswer(String input, String s) {
+        return thingRepository.findAllByThingNameEqualsIgnoreCaseAndThingNameStartsWith(input, s).size()>0;
     }
 }
