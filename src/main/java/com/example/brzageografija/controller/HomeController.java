@@ -1,6 +1,7 @@
 package com.example.brzageografija.controller;
 
 import com.example.brzageografija.model.ResultDTO;
+import com.example.brzageografija.model.ResultPointsDTO;
 import com.example.brzageografija.service.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.*;
@@ -36,15 +37,32 @@ public class HomeController {
         request.getSession().setAttribute("randomLetter", letter);
         return letter;
     }
-    @PostMapping("/add")
-    public boolean isValidEntry(@RequestBody ResultDTO resultDTO, HttpServletRequest request){
+    @PostMapping("/submitAnswer")
+    public ResultPointsDTO isValidEntry(@RequestBody ResultDTO resultDTO, HttpServletRequest request){
         String randomLetter = (String) request.getSession().getAttribute("randomLetter");
-        return countryService.isValidAnswer(resultDTO.getCountry(), randomLetter) &&
-                cityService.isValidAnswer(resultDTO.getCity(), randomLetter) &&
-                mountainService.isValidAnswer(resultDTO.getMountain(), randomLetter) &&
-                riverService.isValidAnswer(resultDTO.getRiver(), randomLetter) &&
-                plantService.isValidAnswer(resultDTO.getPlant(), randomLetter) &&
-                animalService.isValidAnswer(resultDTO.getAnimal(), randomLetter) &&
-                thingService.isValidAnswer(resultDTO.getThing(), randomLetter);
+        ResultPointsDTO resultPointsDTO = new ResultPointsDTO();
+        int defPoints = 5;
+        resultPointsDTO.setCountry(
+                countryService.isValidAnswer(resultDTO.getCountry(), randomLetter) ? defPoints : 0
+        );
+        resultPointsDTO.setCity(
+                cityService.isValidAnswer(resultDTO.getCity(), randomLetter) ? defPoints : 0
+        );
+        resultPointsDTO.setRiver(
+                riverService.isValidAnswer(resultDTO.getRiver(), randomLetter) ? defPoints: 0
+        );
+        resultPointsDTO.setAnimal(
+                animalService.isValidAnswer(resultDTO.getAnimal(), randomLetter) ? defPoints : 0
+        );
+        resultPointsDTO.setMountain(
+                mountainService.isValidAnswer(resultDTO.getMountain(), randomLetter) ? defPoints : 0
+        );
+        resultPointsDTO.setThing(
+                thingService.isValidAnswer(resultDTO.getThing(), randomLetter) ? defPoints : 0
+        );
+        resultPointsDTO.setPlant(
+                plantService.isValidAnswer(resultDTO.getPlant(), randomLetter) ? defPoints : 0
+        );
+        return resultPointsDTO;
     }
 }
